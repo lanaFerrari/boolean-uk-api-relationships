@@ -6,9 +6,13 @@ async function seed() {
   const users = [
     {
       email: "mike@mail.com",
+      firstName: "Mike",
+      lastName: "Ferrari"
     },
     {
       email: "nathan@mail.com",
+      firstName: "Nathan",
+      lastName: "Ferrara"
     },
   ]
 

@@ -12,6 +12,26 @@ generator client {
 }
 
 model User {
- id       Int        @id @default(autoincrement())
- email    String     @unique
+ id         Int         @id @default(autoincrement())
+ email      String      @unique 
+ firstName  String      @db.VarChar(20)
+ lastName   String      @db.VarChar(25)
+ Address    Address?
+ Order      Order[]
+}
+
+model Address{
+id           Int     @id @default(autoincrement())
+street       String  @db.VarChar(20)
+city         String  @db.VarChar(30)
+postCode     String  @db.VarChar(30)
+user         User    @relation(fields: [userId], references: [id])
+userId Int
+}
+
+model Order {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
 }
